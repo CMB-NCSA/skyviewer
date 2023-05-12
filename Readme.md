@@ -7,12 +7,28 @@ Useful resources:
 * [HiPS in 10 steps](https://aladin.cds.unistra.fr/hips/HipsIn10Steps.gml) - basics of HiPS generation
 * [Hipsgen manual](https://aladin.cds.unistra.fr/hips/HipsgenManual.pdf) 
 
-HiPS generation requires Aladin.jar (provided in this repository).
+HiPS generation requires ```Aladin.jar``` (provided in this repository).
 
+To generate HiPS with default options run a command:
+```java -Xmx16g -jar AladinBeta.jar -hipsgen in=Data out=PilotHiPS id=HiPSID```
+Notes:
+* ```-Xmx16g``` defines memory allocation (16Gb)
+* ```inData``` is a directory with files to convert (tiles in single band)
+* ```out``` is a name of output directory
+* ```id``` matters more if we want to add HiPS to public pool
+
+Other options that might be useful:
+* ```blank=0``` - this parameters is set to ```null``` by default. Switching it to 0 makes hipsgen to switch all zero values with null and make the image transparent where there is no scientific data.
+* ```"dataRange=-0.1 0.1"``` - defines useful data range
+* ```"pixelCut=min max [fct]"``` parameter allows to explicitly indicate the range of original values to be taken into account and the "transfer function" to be applied to obtain the 255 possible values of the compressed tiles: log, sqrt, linear (default), asinh, pow2. 
+* ```color=jpeg``` generate JPEGs instead of PNGs (default).
 
 
 ## AladinLite API basics
 
+Useful resources:
+* [AladinLite API examples](https://aladin.u-strasbg.fr/AladinLite/doc/API/examples/)
+* [AladinLite simple tutorial](https://aladin.cds.unistra.fr/AladinLite/doc/tutorials/interactive-finding-chart/)
 
 ## Development
 
