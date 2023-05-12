@@ -1,5 +1,19 @@
 # NCSA SkyViewer
 
+## HiPS file generation
+
+Useful resources:
+
+* [HiPS in 10 steps](https://aladin.cds.unistra.fr/hips/HipsIn10Steps.gml) - basics of HiPS generation
+* [Hipsgen manual](https://aladin.cds.unistra.fr/hips/HipsgenManual.pdf) 
+
+HiPS generation requires Aladin.jar (provided in this repository).
+
+
+
+## AladinLite API basics
+
+
 ## Development
 
 For the sake of convenience, we are using [the JupyterHub instance](https://gitlab.com/gasc-ncsa/kubernetes/-/blob/master/apps/root/templates/jupyterhub.yaml) deployed [on the SPT-3G Kubernetes cluster](https://spt3g.ncsa.illinois.edu/argo-cd/applications/jupyterhub) for development of the SkyViewer source code. A personal JupyterLab server can be [launched here](https://jupyter.gasc.ncsa.illinois.edu/).
