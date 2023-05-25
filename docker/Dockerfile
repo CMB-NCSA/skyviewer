@@ -57,6 +57,12 @@ RUN . $MINICONDA_PATH/bin/activate && \
     conda install conda-build && \
     conda install ipython pyyaml numpy astropy ipyaladin astroML
 
-
 USER $SPTUSER
 WORKDIR /home/$SPTUSER
+ENV MINICONDA_PATH ${MINICONDA_PATH}
+
+
+# Use entrypoint script to start with conda and spt_cutter initialized
+COPY --chown=${SPTUSER}:${SPTUSER} startup.sh .startup.sh
+RUN chmod a+x .startup.sh
+ENTRYPOINT ["/bin/bash", "-c","source .startup.sh"]
