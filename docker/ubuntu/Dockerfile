@@ -4,8 +4,11 @@ FROM ubuntu:22.04
 ARG UID_NUMBER=1001
 ARG SPTUSER
 ARG SPTHOME=/home/${SPTUSER}
-ARG MINICONDA_PATH=${SPTHOME}/miniconda
+#ARG MINICONDA_PATH=${SPTHOME}/miniconda
+ARG MINICONDA_PATH=/opt/miniconda
 ARG MINICONDA_INSTALL_FILE=Miniconda3-py310_23.3.1-0-Linux-x86_64.sh
+ENV MINICONDA_PATH ${MINICONDA_PATH}
+
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends
 RUN apt-get update --fix-missing
@@ -40,8 +43,9 @@ RUN mkdir -p /data/skyviewer && \
     chgrp spt /data/skyviewer && \
     chmod g+wrx /data/skyviewer
 
-USER ${SPTUSER}
-WORKDIR ${SPTHOME}
+# Use entrypoint script to start with conda and spt_cutter initialized
+COPY ubuntu/startup.sh /opt/startup.sh
+RUN chmod a+x /opt/startup.sh
 
 # Conda installation, using python38
 RUN mkdir -p ${MINICONDA_PATH} \
@@ -57,12 +61,10 @@ RUN . $MINICONDA_PATH/bin/activate && \
     conda install conda-build && \
     conda install ipython pyyaml numpy astropy ipyaladin astroML
 
-USER $SPTUSER
-WORKDIR /home/$SPTUSER
-ENV MINICONDA_PATH ${MINICONDA_PATH}
+USER ${SPTUSER}
+WORKDIR ${SPTHOME}
 
+#USER $SPTUSER
+#WORKDIR /home/$SPTUSER
 
-# Use entrypoint script to start with conda and spt_cutter initialized
-COPY --chown=${SPTUSER}:${SPTUSER} startup.sh .startup.sh
-RUN chmod a+x .startup.sh
-ENTRYPOINT ["/bin/bash", "-c","source .startup.sh"]
+ENTRYPOINT ["/bin/bash", "-c","source /opt/startup.sh"]
