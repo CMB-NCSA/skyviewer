@@ -3,6 +3,7 @@
 from astropy.io import fits
 import sys
 import os
+import numpy
 
 filenames = sys.argv[1:]
 if len(filenames) == 0:
@@ -19,6 +20,11 @@ for filename in filenames:
     # Open and get the hdu list
     hdul = fits.open(filename)
     SCI = 1
+    WGT = 2
+
+    # Create the mask for weights == 0
+    idx = numpy.where(hdul[WGT].data == 0)
+    hdul[SCI].data[idx] = -99
     hdu = fits.PrimaryHDU(data=hdul[SCI].data, header=hdul[SCI].header)
     hdu.writeto(outname, overwrite=True)
     print(f"# Done with: {filename}")
