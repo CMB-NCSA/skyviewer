@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no">
+</head>
+<body>
+<div id="aladin-lite-div" style="width: 2000px; height: 2000px"></div>
+<!-- <script type="text/javascript" src="https://aladin.cds.unistra.fr/AladinLite/api/v3/latest/aladin.js" charset="utf-8"></script> -->
+<script type="text/javascript" src="aladin.umd.cjs" charset="utf-8"></script>
+
+
+<script type="text/javascript">
+    var aladin;
+
+    A.init.then(() => {
+    aladin = A.aladin('#aladin-lite-div',
+	             {target: "00:00:00.0 -56:45:00.0",
+                fov: 90,
+	              reticleColor: "rgb(0, 0, 0)",
+	  	          survey: "P/DES-DR2/ColorIRG",
+                projection: "ZEA",
+                fullScreen: true,
+                expandLayersControl: false,
+                cooFrame: 'equatorial',
+                showProjectionControl: true,
+                showCooGridControl: false,
+                showSimbadPointerControl: false,
+                showCooGrid: false,
+                showContextMenu: true});
+
+        var hipsDir090 = `https://skyviewer.ncsa.illinois.edu/map/SPT_winter2020_090GHz_HiPS/`;
+        hipsDir090 = hipsDir090.substring(0,hipsDir090.lastIndexOf("/",hipsDir090.length));
+        var hipsDir150 = `https://skyviewer.ncsa.illinois.edu/map/SPT_winter2020_150GHz_HiPS/`;
+        hipsDir150 = hipsDir150.substring(0,hipsDir150.lastIndexOf("/",hipsDir150.length));
+        var hipsDir220 = `https://skyviewer.ncsa.illinois.edu/map/SPT_winter2020_220GHz_HiPS/`;
+        hipsDir220 = hipsDir220.substring(0,hipsDir220.lastIndexOf("/",hipsDir220.length));
+
+  // Create the SPT surveys for Winter 2020
+	const winter090GHz = aladin.createImageSurvey('SPT_winter2020_090GHz_HiPS', 'SPT Winter2020 090GHz', hipsDir090, 'equatorial', 5, {minCut:-0.1, maxCut:0.1, colormap:'viridis', imgFormat: 'fits'});
+	const winter150GHz = aladin.createImageSurvey('SPT_winter2020_150GHz_HiPS', 'SPT Winter2020 150GHz', hipsDir150, 'equatorial', 5, {minCut:-0.1, maxCut:0.1, colormap:'viridis', imgFormat: 'fits'});
+	const winter220GHz = aladin.createImageSurvey('SPT_winter2020_220GHz_HiPS', 'SPT Winter2020 220GHz', hipsDir220, 'equatorial', 5, {minCut:-0.1, maxCut:0.1, colormap:'viridis', imgFormat: 'fits'});
+
+	aladin.setImageLayer(winter090GHz, "090GHz");
+	aladin.setImageLayer(winter220GHz, "220GHz");
+  aladin.setOverlayImageLayer(winter150GHz, "150GHz");
+	aladin.setBaseImageLayer("P/DES-DR2/ColorIRG");
+
+        // manage URL parameters
+        const searchParams = new URL(document.location).searchParams;
+        if (searchParams.has('baseImageLayer')) {
+            aladin.setBaseImageLayer(searchParams.get('baseImageLayer'));
+        }
+        if (searchParams.has('overlayImageLayer')) {
+            aladin.setOverlayImageLayer(searchParams.get('overlayImageLayer'));
+        }
+        if (searchParams.has('cooFrame')) {
+            aladin.setFrame(searchParams.get('cooFrame'));
+        }
+        if (searchParams.has('fov')) {
+            aladin.setFoV(parseFloat(searchParams.get('fov')));
+        }
+        if (searchParams.has('ra') && searchParams.has('dec')) {
+            aladin.gotoRaDec(parseFloat(searchParams.get('ra')), parseFloat(searchParams.get('dec')));
+        }
+        if (searchParams.has('showReticle')) {
+            aladin.showReticle(searchParams.get('showReticle')==='true');
+        }
+        if (searchParams.has('projection')) {
+            aladin.setProjection(searchParams.get('projection'));
+        }
+        if (searchParams.has('showCooGrid')) {
+            const b = searchParams.get('showCooGrid') === 'true';
+            aladin.view.setGridConfig({
+                enabled: b
+            });
+        }
+
+
+    });
+</script>
+
+</body>
+</html>
