@@ -30,21 +30,23 @@ Useful resources:
 * [AladinLite API examples](https://aladin.u-strasbg.fr/AladinLite/doc/API/examples/)
 * [AladinLite simple tutorial](https://aladin.cds.unistra.fr/AladinLite/doc/tutorials/interactive-finding-chart/)
 
-## Development
+## Development using JupyterHub
 
-We are using a [dedicated JupyterHub instance that can be launched here 🔒](https://jupyter.skyviewer.ncsa.illinois.edu/) for development of the SkyViewer source code.
+A [dedicated JupyterHub instance that can be launched here 🔒](https://jupyter.skyviewer.ncsa.illinois.edu/) is available for development of the SkyViewer source code.
 
 One of the reasons we are developing this way is that the JupyterHub instance already [includes a mounted volume from the high-capacity Taiga storage system](https://gitlab.com/spt3g/kubernetes/-/blob/main/charts/jupyterhub/values.yaml). The data files can be generated via JupyterLab and served by an independent [NGINX webserver](https://gitlab.com/spt3g/kubernetes/-/blob/main/charts/skyviewer/templates/deployment.yaml) *in situ*.
 
 The [JupyterLab server image is a custom build](./docker/jupyter/Dockerfile) that includes the required development libraries and tools.
 
-### Local Docker-based development of Aladin Lite
+## Development using Docker locally
+
+### Build the Aladin Lite image
 
 Change to the root directory of your clone of this repo and do the following as shown below:
 
-* clone our Aladin Lite source repo fork
-* build the Docker container image
-* run the Docker container
+* Clone our Aladin Lite source repo fork (`develop` branch).
+* Build the Docker container image.
+* Run the Docker container to verify that the JavaScript works.
 
 ```bash
 $ git clone -b develop git@github.com:CMB-NCSA/aladin-lite.git aladin-lite
@@ -65,35 +67,16 @@ $ docker run --rm -it -p 8088:8088 registry.gitlab.com/cmb-ncsa/aladin-lite
 
 ```
 
-To iterate on code, define use a shared volume:
+Open your browser to http://localhost:8088/examples/.
 
-```bash
-$ docker run --rm -it -p 8088:8088 \
-    -v $(pwd)/aladin-lite:/home/node/src \
-    registry.gitlab.com/cmb-ncsa/aladin-lite \
-    bash
-```
+### Workflow for iterating on Aladin Lite JavaScript
 
-You will need to run `npm install` and `npm build` as shown below before launching the dev server,
-because these files are not stored in the git repo:
+To iterate on code:
 
-```bash
-node@9d9f998182e8:~/src$ npm install
-
-node@9d9f998182e8:~/src$ npm run build
-
-node@9d9f998182e8:~/src$ npm run serve
-
-> aladin-lite@3.1.0 serve
-> vite --host --port 8088
-
-  VITE v4.3.9  ready in 296 ms
-
-  ➜  Local:   http://localhost:8088/
-  ➜  Network: http://172.17.0.2:8088/
-  ➜  press h to show help
-```
-
+1. Edit `www/index.html` and any other web files comprising the web app under `www/`
+2. Edit Aladin source files under `aladin-lite/src/`
+3. Run the `build_aladin.sh` script to rebuild the JavaScript file and copy into `www/js/`
+4. Repeat steps 1-3.
 
 ## Deployment
 
