@@ -36,7 +36,64 @@ We are using a [dedicated JupyterHub instance that can be launched here 🔒](ht
 
 One of the reasons we are developing this way is that the JupyterHub instance already [includes a mounted volume from the high-capacity Taiga storage system](https://gitlab.com/spt3g/kubernetes/-/blob/main/charts/jupyterhub/values.yaml). The data files can be generated via JupyterLab and served by an independent [NGINX webserver](https://gitlab.com/spt3g/kubernetes/-/blob/main/charts/skyviewer/templates/deployment.yaml) *in situ*.
 
-The [JupyterLab server image is a custom build](./Dockerfile) that includes the required development libraries and tools.
+The [JupyterLab server image is a custom build](./docker/jupyter/Dockerfile) that includes the required development libraries and tools.
+
+### Local Docker-based development of Aladin Lite
+
+Change to the root directory of your clone of this repo and do the following as shown below:
+
+* clone our Aladin Lite source repo fork
+* build the Docker container image
+* run the Docker container
+
+```bash
+$ git clone -b develop git@github.com:CMB-NCSA/aladin-lite.git aladin-lite
+
+$ docker build ./aladin-lite -t registry.gitlab.com/cmb-ncsa/aladin-lite
+
+$ docker run --rm -it -p 8088:8088 registry.gitlab.com/cmb-ncsa/aladin-lite
+
+> aladin-lite@3.1.0 serve
+> vite --host --port 8088
+
+
+  VITE v4.3.9  ready in 315 ms
+
+  ➜  Local:   http://localhost:8088/
+  ➜  Network: http://172.17.0.2:8088/
+  ➜  press h to show help
+
+```
+
+To iterate on code, define use a shared volume:
+
+```bash
+$ docker run --rm -it -p 8088:8088 \
+    -v $(pwd)/aladin-lite:/home/node/src \
+    registry.gitlab.com/cmb-ncsa/aladin-lite \
+    bash
+```
+
+You will need to run `npm install` and `npm build` as shown below before launching the dev server,
+because these files are not stored in the git repo:
+
+```bash
+node@9d9f998182e8:~/src$ npm install
+
+node@9d9f998182e8:~/src$ npm run build
+
+node@9d9f998182e8:~/src$ npm run serve
+
+> aladin-lite@3.1.0 serve
+> vite --host --port 8088
+
+  VITE v4.3.9  ready in 296 ms
+
+  ➜  Local:   http://localhost:8088/
+  ➜  Network: http://172.17.0.2:8088/
+  ➜  press h to show help
+```
+
 
 ## Deployment
 
