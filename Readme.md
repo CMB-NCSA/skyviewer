@@ -88,7 +88,7 @@ The JupyterHub instance is also deployed [🔒 via ArgoCD](https://spt3g.ncsa.il
 
 ### SkyViewer web app
 
-The SkyViewer ArgoCD Application referenced in the Deployment section includes an instance of [OAuth2-Proxy](https://gitlab.com/decentci/charts/-/tree/main/charts/oauth2-proxy-traefik), which provides a lightweight middleware to secure arbitrary ingress routes. In this case, it is configured to authenticate visitors using [the "caps" realm of our SPT-3G project Keycloak server](https://keycloak.spt3g.ncsa.illinois.edu/realms/caps/). Access to the SkyServer web app at https://skyviewer.ncsa.illinois.edu/map/ is limited to members of the Keycloak group `/caps/skyviewer` as configured in its ArgoCD Application linked above.
+The SkyViewer ArgoCD Application referenced in the Deployment section includes an instance of [OAuth2-Proxy](https://gitlab.com/decentci/charts/-/tree/main/charts/oauth2-proxy-traefik), which provides a lightweight middleware to secure arbitrary ingress routes. In this case, it is configured to authenticate visitors using [the "spt3g" realm of our SPT-3G project Keycloak server](https://keycloak.spt3g.ncsa.illinois.edu/realms/spt3g/). Access to the SkyServer web app at https://skyviewer.ncsa.illinois.edu/map/ is limited to members of the Keycloak group `/skyviewer` as configured in its ArgoCD Application linked above.
 
 ### JupyterLab server
 
