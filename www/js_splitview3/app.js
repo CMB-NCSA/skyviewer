@@ -91,6 +91,12 @@ A.init.then(() => {
           return false;
       });
   });
+  $("div.aladin-box.aladin-gotoBox > form > input").each(function() {
+      $(this).on('change', function(e) {
+          a1.gotoObject($(this).val());
+          a2.gotoObject($(this).val());
+      });
+  });
   setTimeout(function() {
       $(".twentytwenty-container").twentytwenty({default_offset_pct: 0.5, no_overlay: true});
   }, 300);
