@@ -42,11 +42,11 @@ A.init.then(() => {
   a2.setFovRange(0.01, 175);
 
   // set the local paths for the folders
-  var hipsDir090 = `./hips/SPT_winter2020_090GHz_HiPS/`;
+  var hipsDir090 = `../hips/SPT_winter2020_090GHz_HiPS/`;
   hipsDir090 = hipsDir090.substring(0,hipsDir090.lastIndexOf("/",hipsDir090.length));
-  var hipsDir150 = `./hips/SPT_winter2020_150GHz_HiPS/`;
+  var hipsDir150 = `../hips/SPT_winter2020_150GHz_HiPS/`;
   hipsDir150 = hipsDir150.substring(0,hipsDir150.lastIndexOf("/",hipsDir150.length));
-  var hipsDir220 = `./hips/SPT_winter2020_220GHz_HiPS/`;
+  var hipsDir220 = `../hips/SPT_winter2020_220GHz_HiPS/`;
   hipsDir220 = hipsDir220.substring(0,hipsDir220.lastIndexOf("/",hipsDir220.length));
 
   // Create the SPT surveys for Winter 2020
