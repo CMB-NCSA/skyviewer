@@ -38,9 +38,9 @@
         hipsDir220 = hipsDir220.substring(0,hipsDir220.lastIndexOf("/",hipsDir220.length));
 
   // Create the SPT surveys for Winter 2020
-	const winter090GHz = aladin.createImageSurvey('SPT_winter2020_090GHz_HiPS', 'SPT Winter2020 090GHz', hipsDir090, 'equatorial', 9, {minCut:-0.1, maxCut:0.1, colormap:'viridis', imgFormat: 'fits'});
-	const winter150GHz = aladin.createImageSurvey('SPT_winter2020_150GHz_HiPS', 'SPT Winter2020 150GHz', hipsDir150, 'equatorial', 9, {minCut:-0.1, maxCut:0.1, colormap:'viridis', imgFormat: 'fits'});
-	const winter220GHz = aladin.createImageSurvey('SPT_winter2020_220GHz_HiPS', 'SPT Winter2020 220GHz', hipsDir220, 'equatorial', 9, {minCut:-0.1, maxCut:0.1, colormap:'viridis', imgFormat: 'fits'});
+	const winter090GHz = aladin.createImageSurvey('SPT_winter2020_090GHz_HiPS', 'SPT Winter2020 090GHz', hipsDir090, 'equatorial', 7, {minCut:-0.1, maxCut:0.1, colormap:'viridis', imgFormat: 'fits'});
+	const winter150GHz = aladin.createImageSurvey('SPT_winter2020_150GHz_HiPS', 'SPT Winter2020 150GHz', hipsDir150, 'equatorial', 7, {minCut:-0.1, maxCut:0.1, colormap:'viridis', imgFormat: 'fits'});
+	const winter220GHz = aladin.createImageSurvey('SPT_winter2020_220GHz_HiPS', 'SPT Winter2020 220GHz', hipsDir220, 'equatorial', 7, {minCut:-0.1, maxCut:0.1, colormap:'viridis', imgFormat: 'fits'});
 
 	aladin.setImageLayer(winter090GHz, "090GHz");
 	aladin.setImageLayer(winter220GHz, "220GHz");

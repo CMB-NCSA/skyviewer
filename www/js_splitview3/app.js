@@ -50,9 +50,9 @@ A.init.then(() => {
   hipsDir220 = hipsDir220.substring(0,hipsDir220.lastIndexOf("/",hipsDir220.length));
 
   // Create the SPT surveys for Winter 2020
-  a2.createImageSurvey('P/SPT/WINTER2020-090GHZ', 'SPT Winter2020 090GHz', hipsDir090, 'equatorial', 9, {minCut:-0.1, maxCut:0.1, colormap:'viridis', imgFormat: 'fits'});
-  a2.createImageSurvey('P/SPT/WINTER2020-150GHZ', 'SPT Winter2020 150GHz', hipsDir150, 'equatorial', 9, {minCut:-0.1, maxCut:0.1, colormap:'viridis', imgFormat: 'fits'});
-  a2.createImageSurvey('P/SPT/WINTER2020-220GHZ', 'SPT Winter2020 220GHz', hipsDir220, 'equatorial', 9, {minCut:-0.1, maxCut:0.1, colormap:'viridis', imgFormat: 'fits'});
+  a2.createImageSurvey('P/SPT/WINTER2020-090GHZ', 'SPT Winter2020 090GHz', hipsDir090, 'equatorial', 7, {minCut:-0.1, maxCut:0.1, colormap:'viridis', imgFormat: 'fits'});
+  a2.createImageSurvey('P/SPT/WINTER2020-150GHZ', 'SPT Winter2020 150GHz', hipsDir150, 'equatorial', 7, {minCut:-0.1, maxCut:0.1, colormap:'viridis', imgFormat: 'fits'});
+  a2.createImageSurvey('P/SPT/WINTER2020-220GHZ', 'SPT Winter2020 220GHz', hipsDir220, 'equatorial', 7, {minCut:-0.1, maxCut:0.1, colormap:'viridis', imgFormat: 'fits'});
   a2.setBaseImageLayer("P/SPT/WINTER2020-150GHZ");
 
   //View.CALLBACKS_THROTTLE_TIME = 30;
