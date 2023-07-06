@@ -19,9 +19,12 @@ for filename in filenames:
     print(f"# Will write to:{outname}")
     # Open and get the hdu list
     hdul = fits.open(filename)
-    SCI = 1
-    WGT = 2
-
+    if len(hdul) > 2:
+        SCI = 1
+        WGT = 2
+    else:
+        SCI = 0
+        WGT = 1
     # Create the mask for weights == 0
     idx = numpy.where(hdul[WGT].data == 0)
     hdul[SCI].data[idx] = -99
