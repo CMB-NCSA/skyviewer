@@ -13,11 +13,16 @@ java -Xmx16g -jar skyviewer/AladinBeta.jar -hipsgen in=/data/skyviewer/archive/s
 java -Xmx16g -jar skyviewer/AladinBeta.jar -hipsgen in=/data/skyviewer/archive/src/spt3g/150GHz out=/data/skyviewer/archive/hips/d7/SPT_winter2020_150GHz_HiPS id="NCSA/P/SPT/WINTER2020-150GHZ" -creator="Felipe Menanteau (NCSA)" -title="SPT3G-Winter2020-150GHz" -blank=-99 -order=7 -clean
 java -Xmx16g -jar skyviewer/AladinBeta.jar -hipsgen in=/data/skyviewer/archive/src/spt3g/220GHz out=/data/skyviewer/archive/hips/d7/SPT_winter2020_220GHz_HiPS id="NCSA/P/SPT/WINTER2020-220GHZ" -creator="Felipe Menanteau (NCSA)" -title="SPT3G-Winter2020-220GHz" -blank=-99 -order=7 -clean
 
-# for order 7 takes about 2 hrs
+# Galactic maps for order 7 takes about 2 hrs
 java -Xmx16g -jar skyviewer/AladinBeta.jar -hipsgen in=/data/skyviewer/archive/src/spt3g/090GHz/galactic_plane_fullrate_Coadd90GHz_SCI.fits  out=/data/skyviewer/archive/hips/SPT_galactic_coadd_090GHz_HiPS id="NCSA/P/SPT/GALACTIC-090GHZ" -creator="Felipe Menanteau (NCSA)" -title="SPT3G-Gal-090GHz" -blank=-99 -order=7 -clean
 java -Xmx16g -jar skyviewer/AladinBeta.jar -hipsgen in=/data/skyviewer/archive/src/spt3g/150GHz/galactic_plane_fullrate_Coadd150GHz_SCI.fits out=/data/skyviewer/archive/hips/SPT_galactic_coadd_150GHz_HiPS id="NCSA/P/SPT/GALACTIC-150GHZ" -creator="Felipe Menanteau (NCSA)" -title="SPT3G-Gal-150GHz" -blank=-99 -order=7 -clean
 java -Xmx16g -jar skyviewer/AladinBeta.jar -hipsgen in=/data/skyviewer/archive/src/spt3g/220GHz/galactic_plane_fullrate_Coadd220GHz_SCI.fits out=/data/skyviewer/archive/hips/SPT_galactic_coadd_220GHz_HiPS id="NCSA/P/SPT/GALACTIC-220GHZ" -creator="Felipe Menanteau (NCSA)" -title="SPT3G-Gal-220GHz" -blank=-99 -order=7 -clean
 
+# New Winter maps, order 7
+ARCHIVE_PATH=/data/skyviewer/archive
+java -Xmx16g -jar skyviewer/AladinBeta.jar -hipsgen in=${ARCHIVE_PATH}/src/spt3g/090GHz/ProjZEA_coadd_winter_90GHz_SCI.fits   out=${ARCHIVE_PATH}/hips/SPT_winter_coadd_090GHz_HiPS id="NCSA/P/SPT/WINTER-090GHZ" -creator="Felipe Menanteau (NCSA)" -title="SPT3G-Winter-090GHz" -blank=-99 -order=7 -clean
+java -Xmx16g -jar skyviewer/AladinBeta.jar -hipsgen in=${ARCHIVE_PATH}/src/spt3g/150GHz/ProjZEA_coadd_winter_150GHz_SCI.fits  out=${ARCHIVE_PATH}/hips/SPT_winter_coadd_150GHz_HiPS id="NCSA/P/SPT/WINTER-150GHZ" -creator="Felipe Menanteau (NCSA)" -title="SPT3G-Winter-150GHz" -blank=-99 -order=7 -clean
+java -Xmx16g -jar skyviewer/AladinBeta.jar -hipsgen in=${ARCHIVE_PATH}/src/spt3g/220GHz/ProjZEA_coadd_winter_220GHz_SCI.fits  out=${ARCHIVE_PATH}/hips/SPT_winter_coadd_220GHz_HiPS id="NCSA/P/SPT/WINTER-220GHZ" -creator="Felipe Menanteau (NCSA)" -title="SPT3G-Winter-220GHz" -blank=-99 -order=7 -clean
 
 
 # To star a web server local
