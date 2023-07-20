@@ -24,6 +24,12 @@ java -Xmx16g -jar skyviewer/AladinBeta.jar -hipsgen in=${ARCHIVE_PATH}/src/spt3g
 java -Xmx16g -jar skyviewer/AladinBeta.jar -hipsgen in=${ARCHIVE_PATH}/src/spt3g/150GHz/ProjZEA_coadd_winter_150GHz_SCI.fits  out=${ARCHIVE_PATH}/hips/SPT_winter_coadd_150GHz_HiPS id="NCSA/P/SPT/WINTER-150GHZ" -creator="Felipe Menanteau (NCSA)" -title="SPT3G-Winter-150GHz" -blank=-99 -order=7 -clean
 java -Xmx16g -jar skyviewer/AladinBeta.jar -hipsgen in=${ARCHIVE_PATH}/src/spt3g/220GHz/ProjZEA_coadd_winter_220GHz_SCI.fits  out=${ARCHIVE_PATH}/hips/SPT_winter_coadd_220GHz_HiPS id="NCSA/P/SPT/WINTER-220GHZ" -creator="Felipe Menanteau (NCSA)" -title="SPT3G-Winter-220GHz" -blank=-99 -order=7 -clean
 
+# Summer fields maps, order 7
+ARCHIVE_PATH=/data/skyviewer/archive
+java -Xmx16g -jar skyviewer/AladinBeta.jar -hipsgen in=${ARCHIVE_PATH}/src/spt3g/summer/090GHz out=${ARCHIVE_PATH}/hips/SPT_summer_coadd_090GHz_HiPS id="NCSA/P/SPT/SUMMER-090GHZ" -creator="Felipe Menanteau (NCSA)" -title="SPT3G-Summer-090GHz" -blank=-99 -order=7 -clean
+java -Xmx16g -jar skyviewer/AladinBeta.jar -hipsgen in=${ARCHIVE_PATH}/src/spt3g/summer/150GHz out=${ARCHIVE_PATH}/hips/SPT_summer_coadd_150GHz_HiPS id="NCSA/P/SPT/SUMMER-150GHZ" -creator="Felipe Menanteau (NCSA)" -title="SPT3G-Summer-150GHz" -blank=-99 -order=7 -clean
+java -Xmx16g -jar skyviewer/AladinBeta.jar -hipsgen in=${ARCHIVE_PATH}/src/spt3g/summer/220GHz out=${ARCHIVE_PATH}/hips/SPT_summer_coadd_220GHz_HiPS id="NCSA/P/SPT/SUMMER-220GHZ" -creator="Felipe Menanteau (NCSA)" -title="SPT3G-Summer-220GHz" -blank=-99 -order=7 -clean
+
 
 # To star a web server local
 cd ~/skyviewer-dev/skv-home/data/www
