@@ -31,6 +31,10 @@ java -Xmx16g -jar skyviewer/AladinBeta.jar -hipsgen in=${ARCHIVE_PATH}/src/spt3g
 java -Xmx16g -jar skyviewer/AladinBeta.jar -hipsgen in=${ARCHIVE_PATH}/src/spt3g/summer/220GHz out=${ARCHIVE_PATH}/hips/SPT_summer_coadd_220GHz_HiPS id="NCSA/P/SPT/SUMMER-220GHZ" -creator="Felipe Menanteau (NCSA)" -title="SPT3G-Summer-220GHz" -blank=-99 -order=7 -clean
 
 
+# Low-ell 90GHz
+ARCHIVE_PATH=/data/skyviewer/archive
+java -Xmx16g -jar skyviewer/AladinBeta.jar -hipsgen in=${ARCHIVE_PATH}/src/spt3g/090GHz/spt3g_1500d_low_ell_90GHz_SCI.fits   out=${ARCHIVE_PATH}/hips/SPT_winter_low_ell_090GHz_HiPS id="NCSA/P/SPT/WINTER-LOW_ELL-090GHZ" -creator="Felipe Menanteau (NCSA)" -title="SPT3G-Winter-Low_ell-090GHz" -blank=-99 -order=7 -clean
+
 # To star a web server local
 cd ~/skyviewer-dev/skv-home/data/www
 python3 -m http.server 8080
