@@ -26,7 +26,10 @@ for filename in filenames:
         SCI = 0
         WGT = 1
     # Create the mask for weights == 0
+    # For lowell winter the weights are weird
+    # idx = numpy.where(hdul[WGT].data <= 800000)
     idx = numpy.where(hdul[WGT].data == 0)
+
     hdul[SCI].data[idx] = -99
     hdu = fits.PrimaryHDU(data=hdul[SCI].data, header=hdul[SCI].header)
     hdu.writeto(outname, overwrite=True)
