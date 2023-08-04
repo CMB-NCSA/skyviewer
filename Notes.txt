@@ -40,6 +40,11 @@ java -Xmx16g -jar skyviewer/AladinBeta.jar -hipsgen in=${ARCHIVE_PATH}/src/spt3g
 java -Xmx16g -jar skyviewer/AladinBeta.jar -hipsgen in=${ARCHIVE_PATH}/src/spt3g/wide-2020/150GHz out=${ARCHIVE_PATH}/hips/SPT_wide-2020_150GHz_HiPS id="NCSA/P/SPT/SPT3G-WIDE-150GHZ" -creator="Felipe Menanteau (NCSA)" -title="SPT3G-wide-150GHz" -blank=-99 -order=7 -clean
 java -Xmx16g -jar skyviewer/AladinBeta.jar -hipsgen in=${ARCHIVE_PATH}/src/spt3g/wide-2020/220GHz out=${ARCHIVE_PATH}/hips/SPT_wide-2020_220GHz_HiPS id="NCSA/P/SPT/SPT3G-WIDE-220GHZ" -creator="Felipe Menanteau (NCSA)" -title="SPT3G-wide-220GHz" -blank=-99 -order=7 -clean
 
+# 500d maps for SZ clusters from Lindsay
+ARCHIVE_PATH=/data/skyviewer/archive
+java -Xmx16g -jar skyviewer/AladinBeta.jar -hipsgen in=${ARCHIVE_PATH}/src/sptpol/090GHz out=${ARCHIVE_PATH}/hips/SPTPOL_SZ_090GHz_HiPS id="NCSA/P/SPT/SPTPOL_SZ-090GHZ" -creator="Felipe Menanteau (NCSA)" -title="SPTPOL_SZ-090GHz" -blank=-99 -order=7 -clean
+java -Xmx16g -jar skyviewer/AladinBeta.jar -hipsgen in=${ARCHIVE_PATH}/src/sptpol/150GHz out=${ARCHIVE_PATH}/hips/SPTPOL_SZ_150GHz_HiPS id="NCSA/P/SPT/SPTPOL_SZ-150GHZ" -creator="Felipe Menanteau (NCSA)" -title="SPTPOL_SZ-150GHz" -blank=-99 -order=7 -clean
+
 
 # To star a web server local
 cd ~/skyviewer-dev/skv-home/data/www
