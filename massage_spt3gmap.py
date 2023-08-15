@@ -28,8 +28,14 @@ for filename in filenames:
     # Create the mask for weights == 0
     # For lowell winter the weights are weird
     # idx = numpy.where(hdul[WGT].data <= 800000)
-    idx = numpy.where(hdul[WGT].data == 0)
 
+    # For summer fields we want the following cuts:
+    # 90GHz 0.002
+    # 150GHz 0.002
+    # 220GHz 0.0001
+
+    weight_limit = 0.002
+    idx = numpy.where(hdul[WGT].data <= weight_limit)
     hdul[SCI].data[idx] = -99
     hdu = fits.PrimaryHDU(data=hdul[SCI].data, header=hdul[SCI].header)
     hdu.writeto(outname, overwrite=True)
