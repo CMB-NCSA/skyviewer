@@ -34,7 +34,12 @@ for filename in filenames:
     # 150GHz 0.002
     # 220GHz 0.0001
 
-    weight_limit = 0.002
+    # For the winter fields
+    # 90GHz = 1e-4
+    # 150GHz = 1e-4
+    # 220GHz = 1e-4
+
+    weight_limit = 1e-4
     idx = numpy.where(hdul[WGT].data <= weight_limit)
     hdul[SCI].data[idx] = -99
     hdu = fits.PrimaryHDU(data=hdul[SCI].data, header=hdul[SCI].header)
