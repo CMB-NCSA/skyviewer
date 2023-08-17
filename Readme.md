@@ -49,7 +49,7 @@ Change to the root directory of your clone of this repo and do the following as 
 * Run the Docker container to verify that the JavaScript works.
 
 ```bash
-$ git clone -b develop git@github.com:CMB-NCSA/aladin-lite.git aladin-lite
+$ git clone -b v3.2.0-ncsa git@github.com:CMB-NCSA/aladin-lite.git aladin-lite
 
 $ docker build ./aladin-lite -t registry.gitlab.com/cmb-ncsa/aladin-lite
 
