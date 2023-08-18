@@ -44,8 +44,9 @@ The [JupyterLab server image is a custom build](./docker/jupyter/Dockerfile) tha
 
 Change to the root directory of your clone of this repo and do the following as shown below:
 
-* Clone our Aladin Lite source repo fork (`develop` branch).
-* Build the Docker container image.
+* Build the Docker container image for aladin-lite
+* Clone the Aladin Lite source repo fork (`develop` branch).
+* Copy the updated `package.json` to the cloned repo (this if the one we will edit and customize).
 * Run the Docker container to verify that the JavaScript works.
 
 ```bash
@@ -65,6 +66,7 @@ $ git clone -b v3.2.0 https://github.com/cds-astro/aladin-lite.git
 
 # Make sure we copy the updated package.json file
 $ cp docker-aladin/package.json aladin-lite
+# If we want to star the dev service
 $ docker run --rm -it -p 8080:8080 -v $HOME/skyviewer-dev/skv-home/aladin-lite:/home/node/aladin-lite registry.gitlab.com/cmb-ncsa/aladin-lite:v3.2.0
 
 ...
@@ -81,6 +83,28 @@ dist/aladin.js            2,308.90 kB │ gzip: 836.07 kB
   ➜  Local:   http://localhost:8080/
   ➜  Network: http://172.17.0.2:8080/
   ➜  press h to show help
+
+# If we want to iterate, we need start in bash and start the service inside the container:
+$ docker run --rm -it -p 8080:8080 -v $HOME/skyviewer-dev/skv-home/aladin-lite:/home/node/aladin-lite registry.gitlab.com/cmb-ncsa/aladin-lite:v3.2.0 bash
+
+# Inside the container:
+node@0b8502a9a0b0:~/aladin-lite-docker$ cd ~/aladin-lite        
+node@0b8502a9a0b0:~/aladin-lite$ npm run dev
+...
+vite v4.4.9 building for production...
+✓ 97 modules transformed.
+dist/assets/core_bg.wasm  1,276.00 kB
+dist/aladin.umd.cjs       2,154.80 kB │ gzip: 812.86 kB
+dist/assets/core_bg.wasm  1,276.00 kB
+dist/aladin.js            2,308.85 kB │ gzip: 836.09 kB
+✓ built in 3.73s
+
+  VITE v4.4.9  ready in 1872 ms
+
+  ➜  Local:   http://localhost:8080/
+  ➜  Network: http://172.17.0.2:8080/
+  ➜  press h to show help
+
 
 ```
 
