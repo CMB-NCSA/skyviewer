@@ -54,12 +54,12 @@ $ cd docker-aladin
 $ ./build.sh
 
 ...
-This is the same as running:
+# This is the same as running:
 $ docker build -t registry.gitlab.com/cmb-ncsa/aladin-lite:v3.2.0 --build-arg v3.2.0 .
 ...
 
-Now we want to clone aladin-lite and work and load that copy into the container
-
+# Now we want to clone aladin-lite and work and load that copy into the container
+# For example:
 $ cd ~/skyviewer-dev/skv-home
 $ git clone -b v3.2.0 https://github.com/cds-astro/aladin-lite.git
 
@@ -84,7 +84,7 @@ dist/aladin.js            2,308.90 kB │ gzip: 836.07 kB
 
 ```
 
-Open your browser to http://localhost:8080/examples/.
+Open your browser to http://localhost:8080/examples/
 
 ### Workflow for iterating on Aladin Lite JavaScript
 
