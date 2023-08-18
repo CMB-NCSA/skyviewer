@@ -5,7 +5,7 @@
 Useful resources:
 
 * [HiPS in 10 steps](https://aladin.cds.unistra.fr/hips/HipsIn10Steps.gml) - basics of HiPS generation
-* [Hipsgen manual](https://aladin.cds.unistra.fr/hips/HipsgenManual.pdf) 
+* [Hipsgen manual](https://aladin.cds.unistra.fr/hips/HipsgenManual.pdf)
 
 HiPS generation requires ```Aladin.jar``` (provided in this repository).
 
@@ -20,7 +20,7 @@ Notes:
 Other options that might be useful:
 * ```blank=0``` - this parameters is set to ```null``` by default. Switching it to 0 makes hipsgen to switch all zero values with null and make the image transparent where there is no scientific data.
 * ```"dataRange=-0.1 0.1"``` - defines useful data range
-* ```"pixelCut=min max [fct]"``` parameter allows to explicitly indicate the range of original values to be taken into account and the "transfer function" to be applied to obtain the 255 possible values of the compressed tiles: log, sqrt, linear (default), asinh, pow2. 
+* ```"pixelCut=min max [fct]"``` parameter allows to explicitly indicate the range of original values to be taken into account and the "transfer function" to be applied to obtain the 255 possible values of the compressed tiles: log, sqrt, linear (default), asinh, pow2.
 * ```color=jpeg``` generate JPEGs instead of PNGs (default).
 
 
@@ -49,28 +49,42 @@ Change to the root directory of your clone of this repo and do the following as 
 * Run the Docker container to verify that the JavaScript works.
 
 ```bash
-$ git clone -b v3.2.0 git@github.com:cds-astro/aladin-lite.git aladin-lite
 
-$ docker build . -t registry.gitlab.com/cmb-ncsa/aladin-lite:3.2.0
+$ cd docker-aladin
+$ ./build.sh
 
-$ docker run --rm -it --network host registry.gitlab.com/cmb-ncsa/aladin-lite:3.2.0
+...
+This is the same as running:
+$ docker build -t registry.gitlab.com/cmb-ncsa/aladin-lite:v3.2.0 --build-arg v3.2.0 .
+...
+
+Now we want to clone aladin-lite and work and load that copy into the container
+
+$ cd ~/skyviewer-dev/skv-home
+$ git clone -b v3.2.0 https://github.com/cds-astro/aladin-lite.git
+
+# Make sure we copy the updated package.json file
+$ cp docker-aladin/package.json aladin-lite
+$ docker run --rm -it -p 8080:8080 -v $HOME/skyviewer-dev/skv-home/aladin-lite:/home/node/aladin-lite registry.gitlab.com/cmb-ncsa/aladin-lite:v3.2.0
+
 ...
 vite v4.4.9 building for production...
 ✓ 97 modules transformed.
-dist/assets/core_bg.wasm  1,276.00 kB
-dist/aladin.umd.cjs       2,154.80 kB │ gzip: 812.86 kB
-dist/assets/core_bg.wasm  1,276.00 kB
-dist/aladin.js            2,308.85 kB │ gzip: 836.09 kB
-✓ built in 2.96s
+dist/assets/core_bg.wasm  1,276.04 kB
+dist/aladin.umd.cjs       2,154.85 kB │ gzip: 812.86 kB
+dist/assets/core_bg.wasm  1,276.04 kB
+dist/aladin.js            2,308.90 kB │ gzip: 836.07 kB
+✓ built in 2.69s
 
-  VITE v4.4.9  ready in 354 ms
+  VITE v4.4.9  ready in 559 ms
 
-  ➜  Local:   http://localhost:5173/
-  ➜  Network: use --host to expose
+  ➜  Local:   http://localhost:8080/
+  ➜  Network: http://172.17.0.2:8080/
   ➜  press h to show help
+
 ```
 
-Open your browser to http://localhost:5173/examples/.
+Open your browser to http://localhost:8080/examples/.
 
 ### Workflow for iterating on Aladin Lite JavaScript
 
