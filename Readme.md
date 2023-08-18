@@ -92,7 +92,11 @@ dist/aladin.js            2,308.90 kB │ gzip: 836.07 kB
 $ docker run --rm -it -p 8080:8080 -v $HOME/skyviewer-dev/skv-home/aladin-lite:/home/node/aladin-lite registry.gitlab.com/cmb-ncsa/aladin-lite:v3.2.0 bash
 
 # Inside the container:
-node@0b8502a9a0b0:~/aladin-lite-docker$ cd ~/aladin-lite        
+node@0b8502a9a0b0:~/aladin-lite-docker$ cd ~/aladin-lite
+# The first time we need to run this:
+node@0b8502a9a0b0:~/aladin-lite$ npm install     
+node@0b8502a9a0b0:~/aladin-lite$ npm run build
+$ build and deploy server 
 node@0b8502a9a0b0:~/aladin-lite$ npm run dev
 ...
 vite v4.4.9 building for production...
