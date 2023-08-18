@@ -56,7 +56,7 @@ $ ./build.sh
 
 ...
 # This is the same as running:
-$ docker build -t registry.gitlab.com/cmb-ncsa/aladin-lite:v3.2.0 --build-arg v3.2.0 .
+$ docker build -t registry.gitlab.com/cmb-ncsa/aladin-lite:v3.2.0 .
 ...
 
 <<<<<<< Updated upstream
@@ -69,13 +69,8 @@ Now we want to clone aladin-lite from the NCSA fork and work and load that copy 
 $ cd ~/skyviewer-dev/skv-home
 $ git clone -b main https://github.com/CMB-NCSA/aladin-lite.git
 
-<<<<<<< Updated upstream
-# Make sure we copy the updated package.json file
-$ cp docker-aladin/package.json aladin-lite
 # If we want to star the dev service
-=======
 # Run the container
->>>>>>> Stashed changes
 $ docker run --rm -it -p 8080:8080 -v $HOME/skyviewer-dev/skv-home/aladin-lite:/home/node/aladin-lite registry.gitlab.com/cmb-ncsa/aladin-lite:v3.2.0
 
 ...
