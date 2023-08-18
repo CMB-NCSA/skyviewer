@@ -8,7 +8,7 @@ if [[ ! -d "aladin-lite" ]]; then
 fi
 
 docker run --rm -it -p 8088:8088 \
-    -v $(pwd)/aladin-lite:/home/node/src \
+    -v $(pwd)/aladin-lite:/home/node/aladin-lite \
     registry.gitlab.com/cmb-ncsa/aladin-lite \
     npm run build
 

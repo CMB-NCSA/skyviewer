@@ -49,34 +49,48 @@ Change to the root directory of your clone of this repo and do the following as 
 * Run the Docker container to verify that the JavaScript works.
 
 ```bash
-$ git clone -b v3.2.0-ncsa git@github.com:CMB-NCSA/aladin-lite.git aladin-lite
+$ git clone -b v3.2.0 git@github.com:cds-astro/aladin-lite.git aladin-lite
 
-$ docker build ./aladin-lite -t registry.gitlab.com/cmb-ncsa/aladin-lite
+$ docker build . -t registry.gitlab.com/cmb-ncsa/aladin-lite:3.2.0
 
-$ docker run --rm -it -p 8088:8088 registry.gitlab.com/cmb-ncsa/aladin-lite
+$ docker run --rm -it --network host registry.gitlab.com/cmb-ncsa/aladin-lite:3.2.0
+...
+vite v4.4.9 building for production...
+✓ 97 modules transformed.
+dist/assets/core_bg.wasm  1,276.00 kB
+dist/aladin.umd.cjs       2,154.80 kB │ gzip: 812.86 kB
+dist/assets/core_bg.wasm  1,276.00 kB
+dist/aladin.js            2,308.85 kB │ gzip: 836.09 kB
+✓ built in 2.96s
 
-> aladin-lite@3.1.0 serve
-> vite --host --port 8088
+  VITE v4.4.9  ready in 354 ms
 
-
-  VITE v4.3.9  ready in 315 ms
-
-  ➜  Local:   http://localhost:8088/
-  ➜  Network: http://172.17.0.2:8088/
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
   ➜  press h to show help
-
 ```
 
-Open your browser to http://localhost:8088/examples/.
+Open your browser to http://localhost:5173/examples/.
 
 ### Workflow for iterating on Aladin Lite JavaScript
 
-To iterate on code:
+We need to find a method of hot-reloading when changes to the source files are detected to reduce the code-change-to-effect iteration time. In the meantime, this is the best workflow:
 
-1. Edit `www/index.html` and any other web files comprising the web app under `www/`
-2. Edit Aladin source files under `aladin-lite/src/`
-3. Run the `build_aladin.sh` script to rebuild the JavaScript file and copy into `www/js/`
-4. Repeat steps 1-3.
+1. To iterate on code run the container with a Docker volume sharing the source code on the host.
+
+   ```bash
+   $ docker run --rm -it \
+       --network host \
+       -v $(pwd)/aladin-lite:/home/node/aladin-lite \
+       registry.gitlab.com/cmb-ncsa/aladin-lite:3.2.0 \
+       bash
+   ```
+
+2. In the container, manually run `npm run dev` to compile the JavaScript files and launch the development webserver.
+
+3. After modifying source code on the host (i.e. files in `./aladin-lite/`), stop the webserver using CTRL+C and recompile with `npm run dev`.
+
+4. Repeat step 3 until satisfied.
 
 ## Deployment
 
