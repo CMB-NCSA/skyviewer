@@ -59,7 +59,7 @@ java -jar skyviewer/Hipsgen-cat.jar -cat sptpol_500d_sz -in ${ARCHIVE_PATH}/src/
 
 # EDFS
 ARCHIVE_PATH=/data/skyviewer/archive
-java -Xmx16g -jar skyviewer/AladinBeta.jar -hipsgen in=${ARCHIVE_PATH}/src/spt3g/edfs/skyviewer_coadd_map_ZEA_150GHz.fits out=${ARCHIVE_PATH}/hips/public/SPT_EFDS_095GHz_HiPS id="NCSA/P/SPT/SPT3G_EFDS-095GHZ" -creator="Felipe Menanteau (NCSA)" -title="SPT3G_EFDS-095GHz" -blank=-99 -order=7 -clean
+java -Xmx16g -jar skyviewer/AladinBeta.jar -hipsgen in=${ARCHIVE_PATH}/src/spt3g/edfs/skyviewer_coadd_map_ZEA_95GHz.fits  out=${ARCHIVE_PATH}/hips/public/SPT_EFDS_095GHz_HiPS id="NCSA/P/SPT/SPT3G_EFDS-095GHZ" -creator="Felipe Menanteau (NCSA)" -title="SPT3G_EFDS-095GHz" -blank=-99 -order=7 -clean
 java -Xmx16g -jar skyviewer/AladinBeta.jar -hipsgen in=${ARCHIVE_PATH}/src/spt3g/edfs/skyviewer_coadd_map_ZEA_150GHz.fits out=${ARCHIVE_PATH}/hips/public/SPT_EFDS_150GHz_HiPS id="NCSA/P/SPT/SPT3G_EFDS-150GHZ" -creator="Felipe Menanteau (NCSA)" -title="SPT3G_EFDS-150GHz" -blank=-99 -order=7 -clean
 java -Xmx16g -jar skyviewer/AladinBeta.jar -hipsgen in=${ARCHIVE_PATH}/src/spt3g/edfs/skyviewer_coadd_map_ZEA_220GHz.fits out=${ARCHIVE_PATH}/hips/public/SPT_EFDS_220GHz_HiPS id="NCSA/P/SPT/SPT3G_EFDS-220GHZ" -creator="Felipe Menanteau (NCSA)" -title="SPT3G_EFDS-220GHz" -blank=-99 -order=7 -clean
 
