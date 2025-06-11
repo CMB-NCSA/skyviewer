@@ -57,6 +57,13 @@ ARCHIVE_PATH=/data/skyviewer/archive
 java -jar skyviewer/Hipsgen-cat.jar -cat sptpol_500d_sz -in ${ARCHIVE_PATH}/src/sptpol/catalogs/sptpol500d_sz_catalog.csv -out ${ARCHIVE_PATH}/hips/public/sptpol500d_sz_HiPS -ra SPT_RA -dec SPT_DEC -score M500 -p -lM 7 -af CSV -simple
 
 
+# EDFS
+ARCHIVE_PATH=/data/skyviewer/archive
+java -Xmx16g -jar skyviewer/AladinBeta.jar -hipsgen in=${ARCHIVE_PATH}/src/spt3g/edfs/skyviewer_coadd_map_ZEA_150GHz.fits out=${ARCHIVE_PATH}/hips/public/SPT_EFDS_095GHz_HiPS id="NCSA/P/SPT/SPT3G_EFDS-095GHZ" -creator="Felipe Menanteau (NCSA)" -title="SPT3G_EFDS-095GHz" -blank=-99 -order=7 -clean
+java -Xmx16g -jar skyviewer/AladinBeta.jar -hipsgen in=${ARCHIVE_PATH}/src/spt3g/edfs/skyviewer_coadd_map_ZEA_150GHz.fits out=${ARCHIVE_PATH}/hips/public/SPT_EFDS_150GHz_HiPS id="NCSA/P/SPT/SPT3G_EFDS-150GHZ" -creator="Felipe Menanteau (NCSA)" -title="SPT3G_EFDS-150GHz" -blank=-99 -order=7 -clean
+java -Xmx16g -jar skyviewer/AladinBeta.jar -hipsgen in=${ARCHIVE_PATH}/src/spt3g/edfs/skyviewer_coadd_map_ZEA_220GHz.fits out=${ARCHIVE_PATH}/hips/public/SPT_EFDS_220GHz_HiPS id="NCSA/P/SPT/SPT3G_EFDS-220GHZ" -creator="Felipe Menanteau (NCSA)" -title="SPT3G_EFDS-220GHz" -blank=-99 -order=7 -clean
+
+
 # To star a web server local
 cd ~/skyviewer-dev/skv-home/data/www
 python3 -m http.server 8080
