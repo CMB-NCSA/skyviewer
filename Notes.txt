@@ -75,6 +75,13 @@ cd ~/skv-home
 ARCHIVE_PATH=/data/skyviewer/archive
 java -Xmx16g -jar skyviewer/AladinBeta.jar -hipsgen in=${ARCHIVE_PATH}/src/MeerKAT/MK-SPT-mosaic_v4_for_aladin_no_nans.fits  out=${ARCHIVE_PATH}/hips/private/MeerKAT_HiPS id="NCSA/P/MK/MK-SPT3G" -creator="Felipe Menanteau (NCSA)" -title="MK-SPT3G" -blank=-99 -order=7 -clean
 
+# SPIRE
+ARCHIVE_PATH=/data/skyviewer/archive
+java -Xmx16g -jar skyviewer/AladinBeta.jar -hipsgen in=${ARCHIVE_PATH}/src/spire/SPIRE_PSW_250_aladin_no_nans.fits out=${ARCHIVE_PATH}/hips/private/SPIRE_HiPS_250um id="NCSA/P/SPIRE/SPIRE-250um" -creator="Felipe Menanteau (NCSA)" -title="SPIRE-250um" -blank=-99 -order=11 -clean
+java -Xmx16g -jar skyviewer/AladinBeta.jar -hipsgen in=${ARCHIVE_PATH}/src/spire/SPIRE_PMW_350_aladin_no_nans.fits out=${ARCHIVE_PATH}/hips/private/SPIRE_HiPS_350um id="NCSA/P/SPIRE/SPIRE-350um" -creator="Felipe Menanteau (NCSA)" -title="SPIRE-350um" -blank=-99 -order=11 -clean
+java -Xmx16g -jar skyviewer/AladinBeta.jar -hipsgen in=${ARCHIVE_PATH}/src/spire/SPIRE_PLW_500_aladin_no_nans.fits out=${ARCHIVE_PATH}/hips/private/SPIRE_HiPS_500um id="NCSA/P/SPIRE/SPIRE-500um" -creator="Felipe Menanteau (NCSA)" -title="SPIRE-500um" -blank=-99 -order=11 -clean
+
+
 
 # To star a web server local
 cd ~/skyviewer-dev/skv-home/data/www
