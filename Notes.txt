@@ -81,6 +81,14 @@ java -Xmx16g -jar skyviewer/AladinBeta.jar -hipsgen in=${ARCHIVE_PATH}/src/spire
 java -Xmx16g -jar skyviewer/AladinBeta.jar -hipsgen in=${ARCHIVE_PATH}/src/spire/SPIRE_PMW_350_aladin_no_nans.fits out=${ARCHIVE_PATH}/hips/private/SPIRE_HiPS_350um id="NCSA/P/SPIRE/SPIRE-350um" -creator="Felipe Menanteau (NCSA)" -title="SPIRE-350um" -blank=-99 -order=11 -clean
 java -Xmx16g -jar skyviewer/AladinBeta.jar -hipsgen in=${ARCHIVE_PATH}/src/spire/SPIRE_PLW_500_aladin_no_nans.fits out=${ARCHIVE_PATH}/hips/private/SPIRE_HiPS_500um id="NCSA/P/SPIRE/SPIRE-500um" -creator="Felipe Menanteau (NCSA)" -title="SPIRE-500um" -blank=-99 -order=11 -clean
 
+cd ${ARCHIVE_PATH}/hips/private/SPIRE_HiPS_250um
+ln -s properties properties.txt
+cd ${ARCHIVE_PATH}/hips/private/SPIRE_HiPS_350um
+ln -s properties properties.txt
+cd ${ARCHIVE_PATH}/hips/private/SPIRE_HiPS_500um
+ln -s properties properties.txt
+
+cd ~/skv-home
 
 
 # To star a web server local
