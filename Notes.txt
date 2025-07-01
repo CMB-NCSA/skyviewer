@@ -88,6 +88,12 @@ ln -s properties properties.txt
 cd ${ARCHIVE_PATH}/hips/private/SPIRE_HiPS_500um
 ln -s properties properties.txt
 
+# SPIRE RGB
+ARCHIVE_PATH=/data/skyviewer/archive
+java -Xmx16g -jar skyviewer/AladinBeta.jar -hipsgen in=${ARCHIVE_PATH}/src/spire/SPIRE_RGB_psfix.jpg out=${ARCHIVE_PATH}/hips/private/SPIRE_HiPS_RGB id="NCSA/P/SPIRE/SPIRE-RGB" -creator="Felipe Menanteau (NCSA)" -title="SPIRE-RGB"  color=jpeg -clean -order=7
+cd ${ARCHIVE_PATH}/hips/private/SPIRE_HiPS_RGB
+ln -s properties properties.txt
+
 cd ~/skv-home
 
 
